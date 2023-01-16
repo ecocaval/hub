@@ -4,6 +4,16 @@ function ondeEstou(caixas) {
     let slice = ""
     let lengthTry = 1
     let lengthTryObj = {}
+    let letters = []
+    const caixasArr = caixas.split("")
+
+    caixasArr.forEach(letter => {
+        if(!letters.includes(letter)) {
+            letters.push(letter)
+        }
+    })
+
+    if(letters.length === caixasArr.length) return 1
 
     while (k === 0) {
 
@@ -20,19 +30,17 @@ function ondeEstou(caixas) {
 
             if (slice.length < lengthTry) {
                 
-                let auxCounter = 0
+                let trueCounter = 0
 
                 lengthTryObj[lengthTry - 1].test.forEach(item => {
-                    if(item === true) auxCounter++
+                    if(item === true) trueCounter++
                 });
 
-                if(auxCounter === lengthTryObj[lengthTry - 1].test.length ) {
+                if(trueCounter === lengthTryObj[lengthTry - 1].test.length ) {
                     k = lengthTry
                 }                
                 break
             }
-
-            console.log("slice: " + slice);
 
             if (caixas.indexOf(slice) !== caixas.lastIndexOf(slice) ) {
                 lengthTryObj[lengthTry - 1].test.push(false)
@@ -40,15 +48,8 @@ function ondeEstou(caixas) {
             } else {
                 lengthTryObj[lengthTry - 1].test.push(true)
             }
-
-            console.log("caixas: " + caixas);
         }
         lengthTry++
     }
-
-    console.log(lengthTryObj);
-
     return k
 }
-
-console.log(ondeEstou('ABCDABC'))
