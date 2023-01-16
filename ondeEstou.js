@@ -4,7 +4,6 @@ function ondeEstou(caixas) {
     let newCaixas = ""
     let slice = ""
     let lengthTry = 1
-
     let lengthTryObj = {}
 
     while (k === 0) {
@@ -30,12 +29,9 @@ function ondeEstou(caixas) {
 
                 if(auxCounter === lengthTryObj[lengthTry - 1].test.length ) {
                     k = lengthTry
-                }
-                
+                }                
                 break
             }
-
-            console.log("slice: " + slice);
 
             if (i === 0) {
                 newCaixas = caixas.slice(i + lengthTry)
@@ -49,14 +45,9 @@ function ondeEstou(caixas) {
             } else {
                 lengthTryObj[lengthTry - 1].test.push(true)
             }
-
-            console.log("newCaixas: " + newCaixas);
         }
         lengthTry++
     }
-
-    console.log(lengthTryObj);
-
     return k
 }
 
