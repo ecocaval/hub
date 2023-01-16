@@ -1,7 +1,6 @@
 function ondeEstou(caixas) {
 
     let k = 0
-    let newCaixas = ""
     let slice = ""
     let lengthTry = 1
     let lengthTryObj = {}
@@ -33,22 +32,23 @@ function ondeEstou(caixas) {
                 break
             }
 
-            if (i === 0) {
-                newCaixas = caixas.slice(i + lengthTry)
-            } else {
-                newCaixas = caixas.slice(0, i) + caixas.slice(i + lengthTry)
-            }
+            console.log("slice: " + slice);
 
-            if (newCaixas.includes(slice)) {
+            if (caixas.indexOf(slice) !== caixas.lastIndexOf(slice) ) {
                 lengthTryObj[lengthTry - 1].test.push(false)
                 break
             } else {
                 lengthTryObj[lengthTry - 1].test.push(true)
             }
+
+            console.log("caixas: " + caixas);
         }
         lengthTry++
     }
+
+    console.log(lengthTryObj);
+
     return k
 }
 
-console.log(ondeEstou('ABCDEFABCDEFG'))
+console.log(ondeEstou('ABCDABC'))
